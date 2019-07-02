@@ -54,5 +54,9 @@ A simple StackView to be used for Passcode or OTP fields. Completely customisabl
         
         
         
+ ![Screen Shot 2019-07-02 at 3 44 12 PM](https://user-images.githubusercontent.com/16478904/60504950-4a059d00-9ce0-11e9-8a31-7d2eb0ec6a3a.png)
+        
+        
+        
         
         
