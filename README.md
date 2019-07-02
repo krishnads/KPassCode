@@ -25,7 +25,7 @@ A simple StackView to be used for Passcode or OTP fields. Completely customisabl
 
 # Steps:
 
-# 1. Simply Drag and drop KPin folder in your project. that's it...
+# 1. Simply Drag and drop KPin folder in your project.
 # 2. Drag horizontol UIStackView from UIElement Collection into the storyboard and Give it custom name as 'PinView'
 
 ![Screen Shot 2019-07-02 at 3 40 05 PM](https://user-images.githubusercontent.com/16478904/60504711-baf88500-9cdf-11e9-89d4-79f140c3861e.png)
