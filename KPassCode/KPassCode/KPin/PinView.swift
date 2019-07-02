@@ -9,7 +9,7 @@ import UIKit
 
 class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
     
-    lazy private var config:PinConfig! = PinConfig()
+    lazy public var config:PinConfig! = PinConfig()
     var textFields = [UITextField]()
     
     // MARK: Initialization

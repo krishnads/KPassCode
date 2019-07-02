@@ -15,6 +15,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var config:PinConfig! = PinConfig()
+        config.numberOfFields     = 6
+        config.dotColor           = .red
+        config.lineColor          = .green
+        config.spacing            = 30
+        
+        viewOTP.config = config
         viewOTP.setUpView()
         viewOTP.textFields[0].becomeFirstResponder()
     }
