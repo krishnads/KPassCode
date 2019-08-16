@@ -16,11 +16,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var config:PinConfig! = PinConfig()
-        config.numberOfFields     = 6
-        config.dotColor           = .red
-        config.lineColor          = .green
-        config.spacing            = 30
+        var config:PinConfig!     = PinConfig()
+        config.otpLength          = .four
+        config.dotColor           = .black
+        config.lineColor          = #colorLiteral(red: 0.8265652657, green: 0.8502194881, blue: 0.9000532627, alpha: 1)
+        config.spacing            = 20
+        config.isSecureTextEntry  = false
+        config.showPlaceHolder    = false
         
         viewOTP.config = config
         viewOTP.setUpView()
@@ -30,12 +32,12 @@ class ViewController: UIViewController {
 
     @IBAction func submitButtonAction(_ sender: Any) {
         var otpCode:String = ""
-        for textField in viewOTP.textFields {
-            if textField.text == "" {
-                print("enter 4 digit code")
-                return
-            }
-            otpCode += textField.text!
+        do {
+            otpCode = try self.viewOTP.getOTP()
+        } catch OTPError.inCompleteOTPEntry {
+            print("Incomplete OTP Entry error")
+        } catch let error {
+            print(error.localizedDescription)
         }
         print(otpCode)
     }
