@@ -7,7 +7,38 @@
 
 import UIKit
 
-class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
+public enum OTPError: Error {
+    case inCompleteOTPEntry
+    
+    public var localizedDescription: String {
+        switch self {
+        case .inCompleteOTPEntry:  return "Incomplete OTP Entry"
+        }
+    }
+}
+
+public enum OTPLength {
+    case four
+    case six
+    case custom(Int)
+    var value: Int {
+        switch self {
+        case .four: return 4
+        case .six: return 6
+        case .custom(let num): return num
+        }
+    }
+    
+    var lineLength: Int? {
+        switch self {
+        case .four: return 40
+        case .six: return 30
+        case .custom: return nil
+        }
+    }
+}
+
+class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
     
     lazy public var config:PinConfig! = PinConfig()
     var textFields = [UITextField]()
@@ -27,13 +58,14 @@ class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
         self.config         = config
         self.spacing        = config.spacing!
         self.axis           = .horizontal
-        self.distribution   = .fillEqually
+        self.alignment      = .fill
+        self.distribution   = .fillProportionally
         // setUpView()
     }
     
     public func setUpView() {
         
-        for _ in 0..<config.numberOfFields! {
+        for _ in 0..<config.otpLength!.value {
             let view = UIView()
             view.backgroundColor = .clear
             addArrangedSubview(view)
@@ -41,7 +73,7 @@ class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
         
         self.layoutIfNeeded()
         
-        for i in  stride(from: 0, to: config.numberOfFields!, by:1) {
+        for i in stride(from: 0, to: config.otpLength!.value, by:1) {
             let view = self.arrangedSubviews[i]
             let frameSize:CGSize = self.arrangedSubviews[i].frame.size
             let textField:PinTextField      = PinTextField()
@@ -49,8 +81,8 @@ class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
             textField.tag                   = i+100
             textField.frame                 = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height - 1)
             textField.delegate              = self
-            textField.isSecureTextEntry     = true
-            textField.placeholder           = "*"
+            textField.isSecureTextEntry     = config.isSecureTextEntry!
+            textField.placeholder           = config.showPlaceHolder! ? config.placeHolderText : ""
             textField.backgroundColor       = .white
             textField.textAlignment         = .center
             textField.borderStyle           = .none
@@ -61,7 +93,14 @@ class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
             view.addSubview(textField)
             let viewLine                = UIView()
             viewLine.backgroundColor    = config.lineColor
-            viewLine.frame              = CGRect(x: 0, y: frameSize.height - 1, width: frameSize.width, height: 1)
+
+            let viewLineFrame: CGRect
+            if let lineWidth = config.otpLength!.lineLength {
+                viewLineFrame           = CGRect(x: CGFloat(view.frame.width / 2) - CGFloat(lineWidth / 2), y: frameSize.height - 1, width: CGFloat(lineWidth), height: 1)
+            } else {
+                viewLineFrame           = CGRect(x: 0, y: frameSize.height - 1, width: frameSize.width, height: 1)
+            }
+            viewLine.frame = viewLineFrame
             view.addSubview(viewLine)
             self.textFields.append(textField)
         }
@@ -78,11 +117,24 @@ class PinView: UIStackView, UITextFieldDelegate, OTPDelegate {
             if let currentTextField = self.viewWithTag(textField.tag+1) {
                 currentTextField.becomeFirstResponder()
             } else {
-                //self.endEditing(true)
+                if !textField.text!.isEmpty {
+                    return false
+                }
             }
         }
         textField.text = string
         return false
+    }
+    
+    func getOTP() throws -> String {
+        var otpCode:String = ""
+        for textField in textFields {
+            if textField.text == "" {
+                throw OTPError.inCompleteOTPEntry
+            }
+            otpCode += textField.text!
+        }
+        return otpCode
     }
     
     func OTPTextFieldDidPressBackspace(textfield: PinTextField) {

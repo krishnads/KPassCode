@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol OTPDelegate {
-    func OTPTextFieldDidPressBackspace(textfield: PinTextField)
+protocol OTPTextFieldDelegate {
+    func OTPTextFieldDidPressBackspace(textfield: PinTextField)   
 }
 
 class PinTextField: UITextField {
 
-    var delegateOTP:OTPDelegate!
+    var delegateOTP:OTPTextFieldDelegate!
     
     override func deleteBackward() {
         super.deleteBackward()
