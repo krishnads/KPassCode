@@ -44,7 +44,6 @@
 		182B39D722CB5CD600D79C5D = {
 			isa = PBXGroup;
 			children = (
-				3B1E119A29540F1B0058D81F /* Source */,
 				182B39E222CB5CD600D79C5D /* KPassCode */,
 				182B39E122CB5CD600D79C5D /* Products */,
 			);
@@ -61,6 +60,7 @@
 		182B39E222CB5CD600D79C5D /* KPassCode */ = {
 			isa = PBXGroup;
 			children = (
+				3B1E119A29540F1B0058D81F /* Source */,
 				182B39E322CB5CD600D79C5D /* AppDelegate.swift */,
 				182B39E522CB5CD600D79C5D /* ViewController.swift */,
 				182B39E722CB5CD600D79C5D /* Main.storyboard */,
