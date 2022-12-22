@@ -110,13 +110,19 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.characters.count == 0 {
-            if textField.text?.characters.count == 0 {
+        if string.count == 0 {
+            if textField.text?.count == 0 {
                 if let previousTextField = self.viewWithTag(textField.tag-1) {
                     previousTextField.becomeFirstResponder()
                 }
             }
-        } else {
+        } else if string.count == self.config.otpLength?.value {
+            for (idx,textField) in textFields.enumerated() {
+                 let txt = String(string[string.index(string.startIndex, offsetBy: idx)])
+                textField.text = txt
+            }
+            return false
+        } else if string.count == 1 {
             if let currentTextField = self.viewWithTag(textField.tag+1) {
                 currentTextField.becomeFirstResponder()
             } else {
@@ -124,6 +130,8 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
                     return false
                 }
             }
+        } else {
+            return false
         }
         textField.text = string
         return false
