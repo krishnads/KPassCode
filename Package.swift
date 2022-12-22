@@ -2,11 +2,11 @@
 
 import PackageDescription
 
-let package = Package(name: "KPin",
+let package = Package(name: "KPassCode",
                       platforms: [.iOS(.v11)],
-                      products: [.library(name: "KPin",
-                                          targets: ["KPin"])],
-                      targets: [.target(name: "KPin",
+                      products: [.library(name: "KPassCode",
+                                          targets: ["KPassCode"])],
+                      targets: [.target(name: "KPassCode",
                                         path: "KPassCode/KPassCode/KPin",
                                         exclude: ["Info.plist"],
                                         linkerSettings: [])],
