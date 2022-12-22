@@ -7,7 +7,7 @@ let package = Package(name: "KPassCode",
                       products: [.library(name: "KPassCode",
                                           targets: ["KPassCode"])],
                       targets: [.target(name: "KPassCode",
-                                        path: "KPassCode/Source",
+                                        path: "KPassCode/KPassCode/Source",
                                         linkerSettings: [])],
                       swiftLanguageVersions: [.v5])
 
