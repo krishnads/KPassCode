@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
@@ -8,7 +8,6 @@ let package = Package(name: "KPassCode",
                                           targets: ["KPassCode"])],
                       targets: [.target(name: "KPassCode",
                                         path: "KPassCode/KPassCode/KPin",
-                                        exclude: ["Info.plist"],
                                         linkerSettings: [])],
                       swiftLanguageVersions: [.v5])
 
