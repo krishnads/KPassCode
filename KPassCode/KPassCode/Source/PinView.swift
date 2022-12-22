@@ -137,7 +137,7 @@ public class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
         return false
     }
     
-    func getOTP() throws -> String {
+    public func getOTP() throws -> String {
         var otpCode:String = ""
         for textField in textFields {
             if textField.text == "" {
