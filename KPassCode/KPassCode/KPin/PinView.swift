@@ -83,6 +83,9 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
             textField.delegate              = self
             textField.isSecureTextEntry     = config.isSecureTextEntry!
             textField.placeholder           = config.showPlaceHolder! ? config.placeHolderText : ""
+            if let attributedPH = config.placeHolderAttributedText {
+                textField.attributedPlaceholder = attributedPH
+            }
             textField.backgroundColor       = .white
             textField.textAlignment         = .center
             textField.borderStyle           = .none

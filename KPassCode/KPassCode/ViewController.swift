@@ -22,7 +22,11 @@ class ViewController: UIViewController {
         config.lineColor          = #colorLiteral(red: 0.8265652657, green: 0.8502194881, blue: 0.9000532627, alpha: 1)
         config.spacing            = 20
         config.isSecureTextEntry  = false
-        config.showPlaceHolder    = false
+        config.showPlaceHolder    = true
+        config.placeHolderAttributedText = NSAttributedString(string: "-", attributes: [NSAttributedString.Key.foregroundColor:UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 24.0)!])
+        
+        
+        config.lineColor = .clear
         
         viewOTP.config = config
         viewOTP.setUpView()
