@@ -18,7 +18,7 @@ public struct PinConfig {
     public var placeHolderText: String?
     public var placeHolderAttributedText: NSAttributedString?
     public var showPlaceHolder: Bool?
-    init(numberOfFields:OTPLength = .four, dotColor:UIColor = UIColor.black, lineColor:UIColor = .clear, viewMain:UIView = UIView(), spacing:CGFloat = 8.0, secureTextEntry: Bool = true, placeHolderText: String = "*", showPlaceHolder: Bool = true) {
+    public init(numberOfFields:OTPLength = .four, dotColor:UIColor = UIColor.black, lineColor:UIColor = .clear, viewMain:UIView = UIView(), spacing:CGFloat = 8.0, secureTextEntry: Bool = true, placeHolderText: String = "*", showPlaceHolder: Bool = true) {
         self.otpLength     = numberOfFields
         self.dotColor           = dotColor
         self.lineColor          = lineColor
