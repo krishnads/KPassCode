@@ -15,6 +15,7 @@
 		182B39F822CB5CFC00D79C5D /* PinTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B39F522CB5CFC00D79C5D /* PinTextField.swift */; };
 		182B39F922CB5CFC00D79C5D /* PinConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B39F622CB5CFC00D79C5D /* PinConfig.swift */; };
 		182B39FA22CB5CFC00D79C5D /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B39F722CB5CFC00D79C5D /* PinView.swift */; };
+		3B1E1195295407A20058D81F /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1E1194295407A20058D81F /* Package.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		182B39F522CB5CFC00D79C5D /* PinTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinTextField.swift; sourceTree = "<group>"; };
 		182B39F622CB5CFC00D79C5D /* PinConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinConfig.swift; sourceTree = "<group>"; };
 		182B39F722CB5CFC00D79C5D /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		3B1E1194295407A20058D81F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				182B39EA22CB5CD700D79C5D /* Assets.xcassets */,
 				182B39EC22CB5CD700D79C5D /* LaunchScreen.storyboard */,
 				182B39EF22CB5CD700D79C5D /* Info.plist */,
+				3B1E1194295407A20058D81F /* Package.swift */,
 			);
 			path = KPassCode;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B1E1195295407A20058D81F /* Package.swift in Sources */,
 				182B39FA22CB5CFC00D79C5D /* PinView.swift in Sources */,
 				182B39E622CB5CD600D79C5D /* ViewController.swift in Sources */,
 				182B39F822CB5CFC00D79C5D /* PinTextField.swift in Sources */,
