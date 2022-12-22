@@ -38,10 +38,10 @@ public enum OTPLength {
     }
 }
 
-class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
+public class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
     
     lazy public var config:PinConfig! = PinConfig()
-    var textFields = [UITextField]()
+    public var textFields = [UITextField]()
     
     // MARK: Initialization
     
@@ -83,6 +83,9 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
             textField.delegate              = self
             textField.isSecureTextEntry     = config.isSecureTextEntry!
             textField.placeholder           = config.showPlaceHolder! ? config.placeHolderText : ""
+            if let attributedPH = config.placeHolderAttributedText {
+                textField.attributedPlaceholder = attributedPH
+            }
             textField.backgroundColor       = .white
             textField.textAlignment         = .center
             textField.borderStyle           = .none
@@ -106,14 +109,20 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.characters.count == 0 {
-            if textField.text?.characters.count == 0 {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.count == 0 {
+            if textField.text?.count == 0 {
                 if let previousTextField = self.viewWithTag(textField.tag-1) {
                     previousTextField.becomeFirstResponder()
                 }
             }
-        } else {
+        } else if string.count == self.config.otpLength?.value {
+            for (idx,textField) in textFields.enumerated() {
+                 let txt = String(string[string.index(string.startIndex, offsetBy: idx)])
+                textField.text = txt
+            }
+            return false
+        } else if string.count == 1 {
             if let currentTextField = self.viewWithTag(textField.tag+1) {
                 currentTextField.becomeFirstResponder()
             } else {
@@ -121,12 +130,14 @@ class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
                     return false
                 }
             }
+        } else {
+            return false
         }
         textField.text = string
         return false
     }
     
-    func getOTP() throws -> String {
+    public func getOTP() throws -> String {
         var otpCode:String = ""
         for textField in textFields {
             if textField.text == "" {
