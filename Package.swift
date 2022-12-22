@@ -1,10 +1,3 @@
-//
-//  Package.swift
-//  KPassCode
-//
-//  Created by Harshit Daftary on 22/12/22.
-//  Copyright © 2022 Konstant info Solutions Pvt. Ltd. All rights reserved.
-//
 // swift-tools-version:4.0
 
 import PackageDescription
