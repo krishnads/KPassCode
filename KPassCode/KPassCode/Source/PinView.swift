@@ -41,7 +41,7 @@ public enum OTPLength {
 public class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
     
     lazy public var config:PinConfig! = PinConfig()
-    var textFields = [UITextField]()
+    public var textFields = [UITextField]()
     
     // MARK: Initialization
     
