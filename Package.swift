@@ -8,6 +8,6 @@ let package = Package(name: "KPassCode",
                                           targets: ["KPassCode"])],
                       targets: [.target(name: "KPassCode",
                                         path: "KPassCode/KPassCode/Source",
-                                        linkerSettings: [])]
+                                        linkerSettings: [])],
                       swiftLanguageVersions: [.v5])
 
