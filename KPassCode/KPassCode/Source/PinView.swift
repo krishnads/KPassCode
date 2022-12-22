@@ -109,7 +109,7 @@ public class PinView: UIStackView, UITextFieldDelegate, OTPTextFieldDelegate {
         }
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.count == 0 {
             if textField.text?.count == 0 {
                 if let previousTextField = self.viewWithTag(textField.tag-1) {
