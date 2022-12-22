@@ -7,7 +7,7 @@ let package = Package(name: "KPin",
                       products: [.library(name: "KPin",
                                           targets: ["KPin"])],
                       targets: [.target(name: "KPin",
-                                        path: "KPassCode/KPin",
+                                        path: "KPassCode/KPassCode/KPin",
                                         exclude: ["Info.plist"],
                                         linkerSettings: [])],
                       swiftLanguageVersions: [.v5])
