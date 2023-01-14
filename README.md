@@ -42,11 +42,13 @@ A simple StackView to be used for Passcode or OTP fields. Completely customisabl
 # For More Content: 
 
 
-        var config:PinConfig! = PinConfig()
-        config.numberOfFields     = 6
-        config.dotColor           = .red
-        config.lineColor          = .green
-        config.spacing            = 30
+        var config:PinConfig!     = PinConfig()
+        config.otpLength          = .four
+        config.dotColor           = .black
+        config.lineColor          = #colorLiteral(red: 0.8265652657, green: 0.8502194881, blue: 0.9000532627, alpha: 1)
+        config.spacing            = 20
+        config.isSecureTextEntry  = false
+        config.showPlaceHolder    = false
         
         viewOTP.config = config
         viewOTP.setUpView()
